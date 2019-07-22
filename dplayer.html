@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>播放器</title>
+<link rel="stylesheet" href="http://aiwmy.com:90/dplayer/DPlayer.min.css">
+<div id="dplayer"></div>
+<script src="http://aiwmy.com:90/dplayer/hls.min.js"></script>
+<script src="http://aiwmy.com:90/dplayer/DPlayer.min.js"></script>
+</head>
+<body>
+<script>
+const dp = new DPlayer({
+    container: document.getElementById('dplayer'),
+    video: {
+        url: 'https://letv.com-t-letv.com/20190720/3674_f107162c/index.m3u8',
+        type: 'hls'
+    }
+});  
+</script>
+</body>
+</html>
