@@ -16,18 +16,8 @@ $(function(){
  var liveurl = $.url().param('a');
    const dp = new DPlayer({
     container: document.getElementById('dplayer'),
+    autoplay: true,
     live: true,
-    danmaku: true,
-    apiBackend: {
-        read: function (endpoint, callback) {
-            console.log('Pretend to connect WebSocket');
-            callback();
-        },
-        send: function (endpoint, danmakuData, callback) {
-            console.log('Pretend to send danamku via WebSocket', danmakuData);
-            callback();
-        }
-    },
     video: {
         url: liveurl,
         type: 'hls'
