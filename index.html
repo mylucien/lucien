@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>网络测试专用</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="DPlayer.min.css">
+	<meta name="referrer" content="no-referrer"/>
+	<link rel="stylesheet" href="/static/player/dplayer/DPlayer.min.css">
+	<script type="text/javascript" src="/static/player/dplayer/flv.min.js"></script>
+	<script type="text/javascript" src="/static/player/dplayer/hls.min.js"></script>
+	<script type="text/javascript" src="/static/player/dplayer/dash.all.min.js"></script>
+	<script type="text/javascript" src="/static/player/dplayer/webtorrent.min.js"></script>
+	<script type="text/javascript" src="/static/player/dplayer/DPlayer.min.js"></script>
+</head>
+<style type="text/css">body,html,.content{background-color:black;padding: 0;margin: 0;width:100%;height:100%;color:#999;position:absolute;}</style>
+<body style="overflow-y:hidden;">
+<div class="content dplayer dplayer-no-danmaku" id="ZsPlay"></div>
+
+<script>
+var isPhone = navigator.userAgent.match(/iPad|iPhone|Android|Linux|iPod/i) != null;
+player('ZsPlay', '100%');
+
+
+function _get(name){
+     var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+     if(result == null || result.length < 1){
+         return "";
+     }
+     return decodeURIComponent(result[1])
+}
+function player(id, w) {
+  if (isPhone) {
+    var htm = '<video src="'+ _get('url') +'" controls="controls" poster="https://pic.cytcm.com/logo.gif" autoplay="autoplay" width="' + w + '" height="100%"></video>';
+    document.getElementById(id).innerHTML = htm;
+  } else {
+    var dp = new DPlayer({
+      container: document.getElementById('ZsPlay'),
+      autoplay: true,
+      video: {
+        url: 'https://youku.cdn4-okzy.com/20210226/14251_09bb6d2c/index.m3u8',
+        type: 'hls',
+      }
+    });
+  }
+}
+</script>
+</body>
+</html>
